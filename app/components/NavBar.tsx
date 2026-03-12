@@ -28,9 +28,9 @@ const NavBar = () => {
   }, []);
 
   const links = [
-    { id: 1, name: "Transcribir", src: "transcribir-section" },
-    { id: 2, name: "Sobre nosotros", src: "about-section" },
-    {id:3, name:"Más", src:"mas-section"}
+    { id: 1, name: "Sobre Paleos", src: "sobre-paleos-section" },
+    { id: 2, name: "Misión", src: "mision-section" },
+    { id: 3, name: "Sobre Nosotros", src: "sobre-nosotros-section" }
   ];
 
   // links pantalla grnade o movil
@@ -47,7 +47,7 @@ return (
         <Link
           to="home"
           smooth={true}
-          className="text-4xl cursor-pointer text-gray-800 font-paleo transition-all hover:text-[#C77DFF]"
+          className="text-4xl cursor-pointer text-amber-900 font-paleo transition-all hover:text-[#8B7355]"
         >
           Paleos
         </Link>
@@ -63,7 +63,7 @@ return (
             key={l.id}
             to={l.src}
             smooth={true}
-            className="cursor-pointer text-[#C77DFF] hover:text-[#D799FF] font-medium transition-all"
+            className="cursor-pointer text-[#8B7355] hover:text-[#A0826D] font-medium transition-all"
           >
             {l.name}
           </Link>
@@ -97,7 +97,7 @@ return (
             to={l.src}
             smooth={true}
             duration={500}
-            className="text-xl text-[#C77DFF] hover:text-[#D799FF] font-semibold transition-all"
+            className="text-xl text-[#8B7355] hover:text-[#A0826D] font-semibold transition-all"
             onClick={() => setMenuOpen(false)}
           >
             {l.name}
