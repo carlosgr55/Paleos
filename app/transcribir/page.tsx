@@ -201,10 +201,10 @@ const TranscribirPage = () => {
             </div>
 
             {/* Cuadro Derecho - Texto Transcrito */}
-            <div className="bg-white border-4 border-amber-300 rounded-2xl p-8 min-h-[400px] flex flex-col">
-              <h2 className="text-2xl font-bold text-amber-900 mb-4">Transcripción</h2>
+            <div className="bg-white border-4 border-amber-300 rounded-2xl p-8 flex flex-col h-[500px]">
+              <h2 className="text-2xl font-bold text-amber-900 mb-4 flex-shrink-0">Transcripción</h2>
               
-              <div className="flex-1 overflow-y-auto">
+              <div className="flex-1 overflow-y-auto pr-2">
                 {isTranscribing ? (
                   <div className="flex flex-col items-center justify-center h-full">
                     <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-amber-900 mb-4"></div>
