@@ -3,8 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-scroll";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import NextLink from "next/link";
 
-const NavBar = () => {
+interface NavBarProps {
+  isTranscribirPage?: boolean;
+}
+
+const NavBar = ({ isTranscribirPage = false }: NavBarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [windowDimension, setWindowDimension] = useState({
     innerHeight: 0,
@@ -27,14 +32,12 @@ const NavBar = () => {
     return () => window.removeEventListener("resize", detectSize);
   }, []);
 
-  const links = [
+  // Links diferentes según la página
+  const scrollLinks = [
     { id: 1, name: "Sobre Paleos", src: "sobre-paleos-section" },
     { id: 2, name: "Misión", src: "mision-section" },
     { id: 3, name: "Sobre Nosotros", src: "sobre-nosotros-section" }
   ];
-
-  // links pantalla grnade o movil
-  const showLinks = windowDimension.innerWidth > 768 || menuOpen;
 
 return (
   <nav
@@ -58,16 +61,27 @@ return (
 
       {/* LINKS escritorio */}
       <div className="hidden md:flex items-center gap-10">
-        {links.map((l) => (
-          <Link
-            key={l.id}
-            to={l.src}
-            smooth={true}
-            className="cursor-pointer text-[#8B7355] hover:text-[#A0826D] font-medium transition-all"
-          >
-            {l.name}
-          </Link>
-        ))}
+        {isTranscribirPage ? (
+          <NextLink href="/" className="cursor-pointer text-[#8B7355] hover:text-[#A0826D] font-medium transition-all no-underline">
+            Inicio
+          </NextLink>
+        ) : (
+          <>
+            {scrollLinks.map((l) => (
+              <Link
+                key={l.id}
+                to={l.src}
+                smooth={true}
+                className="cursor-pointer text-[#8B7355] hover:text-[#A0826D] font-medium transition-all"
+              >
+                {l.name}
+              </Link>
+            ))}
+            <NextLink href="/transcribir" className="cursor-pointer text-[#8B7355] hover:text-[#A0826D] font-medium transition-all no-underline">
+              Transcribir
+            </NextLink>
+          </>
+        )}
       </div>
 
       {/* Icono menu movil */}
@@ -91,18 +105,37 @@ return (
     {/* MENU DESPLEGABLE: Ahora es parte del mismo contenedor blanco */}
     {menuOpen && (
       <div className="flex flex-col items-center justify-center gap-6 py-8 border-t border-gray-100">
-        {links.map((l) => (
-          <Link
-            key={l.id}
-            to={l.src}
-            smooth={true}
-            duration={500}
-            className="text-xl text-[#8B7355] hover:text-[#A0826D] font-semibold transition-all"
+        {isTranscribirPage ? (
+          <NextLink 
+            href="/" 
+            className="text-xl text-[#8B7355] hover:text-[#A0826D] font-semibold transition-all no-underline"
             onClick={() => setMenuOpen(false)}
           >
-            {l.name}
-          </Link>
-        ))}
+            Inicio
+          </NextLink>
+        ) : (
+          <>
+            {scrollLinks.map((l) => (
+              <Link
+                key={l.id}
+                to={l.src}
+                smooth={true}
+                duration={500}
+                className="text-xl text-[#8B7355] hover:text-[#A0826D] font-semibold transition-all"
+                onClick={() => setMenuOpen(false)}
+              >
+                {l.name}
+              </Link>
+            ))}
+            <NextLink 
+              href="/transcribir" 
+              className="text-xl text-[#8B7355] hover:text-[#A0826D] font-semibold transition-all no-underline"
+              onClick={() => setMenuOpen(false)}
+            >
+              Transcribir
+            </NextLink>
+          </>
+        )}
       </div>
     )}
   </nav>

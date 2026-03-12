@@ -47,7 +47,7 @@ const LandingPage = () => {
             
             {/* Botón Comenzar */}
             <div className="flex justify-center mt-8">
-              <Link href="/archivo" className="no-underline">
+              <Link href="/transcribir" className="no-underline">
                 <button className="bg-[#8B7355] hover:bg-[#6B5744] text-white px-12 py-4 rounded-full text-xl font-bold transition-all hover:scale-105 shadow-lg shadow-amber-300">
                   Comenzar
                 </button>
